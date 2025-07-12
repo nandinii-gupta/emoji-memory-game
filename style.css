@@ -74,6 +74,9 @@ h1 {
   display: grid;
   gap: 14px;
   justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 @media (min-width: 600px) {
@@ -114,7 +117,7 @@ h1 {
   height: 100%;
   display: grid;
   place-items: center;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
   backface-visibility: hidden;
   border-radius: 12px;
   user-select: none;
