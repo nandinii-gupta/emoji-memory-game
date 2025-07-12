@@ -12,6 +12,10 @@ html, body {
   box-sizing: border-box;
 }
 
+html {
+  font-size: clamp(14px, 1.5vw, 18px);
+}
+
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
@@ -70,13 +74,15 @@ h1 {
   background: #1f7fc3;
 }
 
+
 #game-board {
   display: grid;
   gap: 14px;
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-  max-width: 600px;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  max-width: 700px;
   margin: 0 auto;
+  padding-bottom: 3rem;
 }
 
 @media (min-width: 600px) {
