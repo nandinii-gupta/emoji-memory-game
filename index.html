@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Emoji Memory Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Emoji Memory Game</h1>
+
+    <div class="controls">
+      <select id="difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+      <button id="reset-game">🔄 Reset</button>
+      <button id="toggle-dark">🌙</button>
+      <button id="pause-timer">⏸️</button>
+      <span id="move-counter">Moves: 0</span>
+      <span id="timer">Time: 0s</span>
+
+    </div>
+
+    <div id="game-board"></div>
+  </div>
+
+  <!-- Victory Model -->
+  <div id="victory-modal">
+    <h2>🎉 You Win!</h2>
+    <p id="victory-message"></p>
+    <button id="play-again">Play Again</button>
+  </div>
+
+  <!-- Music + Confetti -->
+  <button id="music-toggle">🔊</button>
+  <audio id="bg-music" loop>
+  <source src="game-background-sound-342336.mp3" type="audio/mpeg" />
+</audio>
+
+  <audio id="win-sound">
+  <source src="goodresult-82807.mp3" type="audio/mpeg" />
+</audio>
+
+  <audio id="match-sound">
+  <source src="success-340660.mp3" type="audio/mpeg" />
+</audio>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
+
+
+
+

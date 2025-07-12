@@ -1,0 +1,259 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(135deg, #f3f4f6, #dbeafe);
+  color: #333;
+  transition: background 0.5s, color 0.5s;
+  overflow-x: hidden;
+}
+
+body.dark {
+  background: linear-gradient(135deg, #1f2937, #111827);
+  color: #f9fafb;
+}
+
+audio {
+  display: none;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem 1rem;
+  text-align: center;
+  animation: fadeIn 1.2s ease;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #315ba5;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.controls select,
+.controls button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  background: #50709a;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.controls button:hover,
+.controls select:hover {
+  background: #1f7fc3;
+}
+
+#game-board {
+  display: grid;
+  gap: 14px;
+  justify-content: center;
+}
+
+@media (min-width: 600px) {
+  #game-board {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  }
+}
+
+@media (max-width: 599px) {
+  #game-board {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card {
+  perspective: 1000px;
+}
+
+.card-inner {
+  width: 90px;
+  height: 90px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.card.flipped .card-inner,
+.card.matched .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  user-select: none;
+}
+
+.card-front {
+  background: #e0e7ff;
+  border: 2px solid #a5b4fc;
+}
+
+.card-back {
+  background: #e0f2fe;
+  border: 2px solid #60a5fa;
+  transform: rotateY(180deg);
+}
+
+body.dark .card-front {
+  background: #334155;
+  border-color: #475569;
+}
+
+body.dark .card-back {
+  background: #2b4ba3;
+  border-color: #3b82f6;
+}
+
+#victory-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s;
+  z-index: 1000;
+}
+
+#victory-modal.show {
+  opacity: 1;
+  pointer-events: all;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+#victory-modal h2 {
+  color: #22c55e;
+}
+
+#victory-modal p {
+  margin: 1rem 0;
+}
+
+#play-again {
+  background: #22c55e;
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#play-again:hover {
+  background: #16a34a;
+}
+
+#music-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 55px;
+  height: 55px;
+  font-size: 1.6rem;
+  border-radius: 50%;
+  border: none;
+  background: #50709a;
+  color: white;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#music-toggle:hover {
+  background: #1f7fc3;
+}
+
+#match-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100dvh;
+  width: 100dvw;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.match-animation {
+  text-align: center;
+  background: white;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  animation: popIn 0.4s ease;
+}
+
+.match-animation p {
+  font-size: 1.2rem;
+  margin-top: 0.8rem;
+  color: #444;
+  font-weight: 600;
+}
+
+.card-showcase {
+  font-size: 2.5rem;
+  display: inline-block;
+  margin: 0 0.5rem;
+  transform: scale(1.2);
+  animation: floatUp 0.8s ease;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(20px) scale(1.2); opacity: 0; }
+  100% { transform: translateY(0) scale(1.2); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
