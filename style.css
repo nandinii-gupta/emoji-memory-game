@@ -3,6 +3,12 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+:root{
+  /* 70 px on the tiniest phones ‑‑► 110 px on large screens                */
+  --card-size: clamp(70px, 18vw, 110px);
+}
+
 html, body {
   height: 100%;
   overflow-x: hidden;
@@ -79,7 +85,7 @@ h1 {
   display: grid;
   gap: 14px;
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-size), 1fr));
   max-width: 700px;
   margin: 0 auto;
   padding-bottom: 3rem;
@@ -98,13 +104,15 @@ h1 {
 }
 
 .card {
-  perspective: 1000px;
+  perspective: 1000px;      /* keep the 3‑D flip */
+  width: 100%;
+  height: 100%;
 }
 
 .card-inner {
-  width: 90px;
-  height: 90px;
   position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;      /* ↔ = ↕  (supported in every modern mobile browser) */
   transform-style: preserve-3d;
   transition: transform 0.8s;
   border-radius: 12px;
@@ -266,3 +274,5 @@ body.dark .card-back {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+

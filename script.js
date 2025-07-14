@@ -84,8 +84,8 @@ function createBoard(difficulty = "easy") {
   timerPaused  = false;
   startTimer();
 
-  const gridCols = Math.ceil(Math.sqrt(cards.length));
-  board.style.gridTemplateColumns = `repeat(${gridCols}, minmax(70px, 1fr))`;
+  // const gridCols = Math.ceil(Math.sqrt(cards.length));
+  // board.style.gridTemplateColumns = `repeat(${gridCols}, minmax(70px, 1fr))`;
 
   // Create card elements
   cards.forEach(emoji => {
@@ -208,6 +208,17 @@ pauseBtn.addEventListener("click", () => {
 });
 
 createBoard();
+
+
+
+
+
+
+
+
+
+
+
 
 
 
