@@ -5,7 +5,6 @@
 }
 
 :root{
-  /* 70 px on the tiniest phones ‑‑► 110 px on large screens                */
   --card-size: clamp(70px, 18vw, 110px);
 }
 
@@ -172,6 +171,11 @@ body.dark .card-back {
   pointer-events: none;
   transition: all 0.4s;
   z-index: 1000;
+}
+
+body.dark #victory-modal {
+  background: #1e293b; /* dark modal background */
+  color: #f9fafb;       /* light text for dark bg */
 }
 
 #victory-modal.show {
